@@ -1,0 +1,25 @@
+<apex:page controller="AccountListController">
+    <apex:form >
+        <apex:pageBlock title="Account Search Filters Visualforce- Demo by Zee">
+            <apex:pageBlockSection >
+                <apex:inputText value="{!searchKeyword}" title="Enter Account Name"/>
+                <apex:commandButton value="Search" action="{!searchAccounts}"/>
+                
+    
+                
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+
+    <apex:pageBlock title="Account List">
+        <apex:pageBlockTable value="{!accountList}" var="acc">
+            <apex:column headerValue="Account Name">
+                <apex:outputLink value="/{!acc.Id}">{!acc.Name}</apex:outputLink>
+            </apex:column>
+            <apex:column value="{!acc.Type}"/>
+            <apex:column value="{!acc.Industry}"/>
+            <apex:column value="{!acc.Phone}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>
