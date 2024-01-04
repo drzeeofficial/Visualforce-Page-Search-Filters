@@ -1,0 +1,35 @@
+public class AccountListController {
+   
+    public List<Account> accountList { get; set; }
+   
+    public String searchKeyword { get; set; }
+	public String phoneKeyword { get; set; }
+    public String type { get; set; }
+        
+    public AccountListController() {
+       
+        searchKeyword = '';
+        phoneKeyword = '';
+        type = '';
+       
+        loadAllAccounts();
+    }
+    
+    
+    public void loadAllAccounts() {
+        accountList = [SELECT Id, Name, Type, Industry, Phone FROM Account];
+    }
+
+   
+    public void searchAccounts() {
+        accountList = [SELECT Id, Name, Type, Industry, Phone FROM Account WHERE Name LIKE :'%'+searchKeyword+'%' AND Type LIKE :'%'+type+'%' ];
+    }
+       public void searchPhone() {
+        accountList = [SELECT Id, Name, Type, Industry, Phone FROM Account WHERE Phone LIKE :'%'+phoneKeyword+'%'];
+    }
+    
+    public void searchType() {
+       accountList = [SELECT Id, Name, Type, Industry, Phone FROM Account WHERE Phone LIKE :'%'+type+'%'];
+    }
+    
+}
